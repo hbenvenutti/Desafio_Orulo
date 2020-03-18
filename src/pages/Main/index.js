@@ -74,6 +74,14 @@ export default class Main extends Component {
       ? (building.favorite = false)
       : (building.favorite = true);
 
+    if (building.favorite === false) {
+      this.setState({
+        favorites: favorites.filter(favorite => favorite.id !== building.id),
+      });
+
+      return;
+    }
+
     this.setState({
       buildings,
       favorites: [...favorites, building],
